@@ -1,14 +1,17 @@
-.flag{
-    display: inline-block;
-    border: 1px solid ;
-    padding: 20px;
-    border-radius: 8px;
-    height: 'auto';
-    width: 130px;
-    
+.flag {
+  display: "flex";
+  justify-content: "center";
+  align-items: "center";
+  flex-direction: "column";
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid black;
+  border-radius: 8px;
+  height: 200px;
+  width: 100px;
 }
 
-.flagimg{
-    height: 80px;
-    width: 80px;
+.flagimg {
+  height: 100px;
+  width: 100px;
 }
