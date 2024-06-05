@@ -1,0 +1,14 @@
+.flag{
+    display: inline-block;
+    border: 1px solid ;
+    padding: 20px;
+    border-radius: 8px;
+    height: 'auto';
+    width: 130px;
+    
+}
+
+.flagimg{
+    height: 80px;
+    width: 80px;
+}

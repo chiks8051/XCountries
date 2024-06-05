@@ -1,8 +1,9 @@
 import './App.css';
+import Flag from './Component/Flag';
 
 function App() {
   return (
-    <h1>Hi checking.</h1>
+    <Flag/>
   );
 }
 
