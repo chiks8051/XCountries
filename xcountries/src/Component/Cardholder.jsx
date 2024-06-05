@@ -6,8 +6,8 @@ const Card = ({ country }) => {
     <div className="flag">
       <img
         className="flagimg"
-        src={country.flags.svg}
-        alt={country.name.common}
+        src={country.flags.png}
+        alt={country.name.alt}
       />
       <h3>{country.name.common}</h3>
     </div>

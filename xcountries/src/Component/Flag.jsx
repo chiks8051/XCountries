@@ -14,7 +14,7 @@ const Flag =  () =>{
                 const response = await axios.get(endpoint);
                 setFlags(response.data);
             } catch (error) {
-                console.log(error)
+                console.log("Error: ",error)
             }
         };
     
