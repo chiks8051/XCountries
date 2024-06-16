@@ -42,7 +42,7 @@ const Flag = () => {
         value={searchTerm}
         onChange={handleSearchChange}
       />
-      <div className="card-container">
+      <div className="card-container countryCard">
         {filteredFlags.map((country) => (
           <Card key={country.cca3} country={country} />
         ))}
