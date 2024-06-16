@@ -1,38 +1,35 @@
 import React, { useEffect, useState } from "react";
-import Card from "./Cardholder";
 import axios from "axios";
 import "./Flag.css";
 
 const Flag = () => {
   const [flags, setFlags] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
   const endpoint = "https://restcountries.com/v3.1/all";
 
   useEffect(() => {
-    const fetchFlag = async () => {
+    const fetchFlags = async () => {
       try {
         const response = await axios.get(endpoint);
         setFlags(response.data);
-        console.log(response.data);
+        setLoading(false);
       } catch (error) {
-        console.log("Error: ", error);
+        console.error("Error fetching data:", error);
+        setLoading(false);
       }
     };
 
-    fetchFlag();
+    fetchFlags();
   }, []);
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   };
 
-
-  let filteredFlags = flags;
-  if (searchTerm.trim() !== "") {
-    filteredFlags = flags.filter((country) =>
-      country.name.common.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-  }
+  let filteredFlags = flags.filter((country) =>
+    country.name.common.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <div className="flag-container">
@@ -41,13 +38,22 @@ const Flag = () => {
         placeholder="Search countries..."
         value={searchTerm}
         onChange={handleSearchChange}
+        className="search-input"
       />
-      {filteredFlags.length === 0 && (
+      {loading && <div>Loading...</div>}
+      {!loading && filteredFlags.length === 0 && (
         <div>No results found.</div>
       )}
-      <div className="card-container countryCard">
+      <div className="card-container">
         {filteredFlags.map((country) => (
-          <Card key={country.cca3} country={country} className="countryCard"/>
+          <div key={country.cca3} className="countryCard">
+            <img
+              src={country.flags.png}
+              alt={`Flag of ${country.name.common}`}
+              className="flag-img"
+            />
+            <div className="country-name">{country.name.common}</div>
+          </div>
         ))}
       </div>
     </div>
