@@ -42,9 +42,12 @@ const Flag = () => {
         value={searchTerm}
         onChange={handleSearchChange}
       />
+      {filteredFlags.length === 0 && (
+        <div>No results found.</div>
+      )}
       <div className="card-container countryCard">
         {filteredFlags.map((country) => (
-          <Card key={country.cca3} country={country} />
+          <Card key={country.cca3} country={country} className="countryCard"/>
         ))}
       </div>
     </div>
